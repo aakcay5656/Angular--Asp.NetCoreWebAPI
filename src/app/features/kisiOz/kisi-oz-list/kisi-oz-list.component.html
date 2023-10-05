@@ -1,0 +1,31 @@
+<div class="container">
+
+    <h1 class="mt-3">telefon rehberi</h1>
+    <div class="d-flex justify-content-end mt-3">
+        <a [routerLink]="['/admin/kisi-oz-list/kisi-ekle']" class="btn btn-primary">Kişi Ekle</a>
+    </div>
+    <ng-container *ngIf="kisiOz$ | async as kisiOz">
+        <table class="table table-bordered mt-3">
+            <thead>
+                <tr>
+                    
+                    <th>isim soyisim:</th>
+                    <th>Telefon Numarası:</th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let person of kisiOz">
+                    
+                    <td>{{person.name}}</td>
+                    <td>{{person.tell}}</td>
+                    <td>
+                        <a class="btn btn-light" [routerLink]="['/admin/kisi-oz-list',person.id]">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </ng-container>
+</div>
